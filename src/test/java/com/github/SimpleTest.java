@@ -3,8 +3,6 @@ package com.github;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SimpleTest {
@@ -18,8 +16,6 @@ public class SimpleTest {
         $(".div h2");
         $(".div").$("h1");
     }
-
-
     @Test
     void BrowserCommandExamples() {
 
@@ -33,7 +29,6 @@ public class SimpleTest {
         //$$("ol[start=\"3\"]").find(visible).scrollTo().shouldHave(text("Using JUnit5 extend test class:"));//Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
         $("#wiki-body").shouldHave(text("Using JUnit5 extend test class:"));
     }
-
     @Test
     void dragAndDrop() {
         open("https://the-internet.herokuapp.com/drag_and_drop");//открыть
