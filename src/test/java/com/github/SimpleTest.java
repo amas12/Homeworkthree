@@ -20,7 +20,6 @@ public class SimpleTest {
     }
     @Test
     void BrowserCommandExamples() {
-
         open("https://github.com/");//Откройте страницу
         $("[data-test-selector=nav-search-input]").setValue("Selenide").pressEnter();//Ввести Selenide
         $$("ul.repo-list li").first().$("a").click(); //кликнуть на первый элемент
