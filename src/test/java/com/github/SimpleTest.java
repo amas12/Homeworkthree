@@ -28,10 +28,8 @@ public class SimpleTest {
         $$("ul.repo-list li").first().$("a").click(); //кликнуть на первый элемент
         $("h1").shouldHave(text("selenide / selenide"));//проверить текст selenide
         $("#wiki-tab").click();//Перейдите в раздел Wiki проекта
-        //$("#wiki-pages-box").shouldHave(text("SoftAssertions"));
-        sleep(4000);
-        //$("#wiki-pages-box").$(byText("SoftAssertions")).click();
-        $(".Layout-main").$(byText("Soft assertions")).click();//Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
+        $("#wiki-body .markdown-body").shouldHave(text("Soft Assertions"));
+        $x("(//a[@href='/selenide/selenide/wiki/SoftAssertions'])[2]").click();//Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
         //$$("ol[start=\"3\"]").find(visible).scrollTo().shouldHave(text("Using JUnit5 extend test class:"));//Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
         $("#wiki-body").shouldHave(text("Using JUnit5 extend test class:"));
     }
@@ -39,7 +37,6 @@ public class SimpleTest {
     @Test
     void dragAndDrop() {
         open("https://the-internet.herokuapp.com/drag_and_drop");//открыть
-        sleep(3000);
         $("#column-a").dragAndDropTo("#column-b");//Перенесите прямоугольник А на место В
         $("#column-a").shouldHave(text("B"));//Проверьте, что прямоугольники действительно поменялись
         $("#column-b").shouldHave(text("A"));
