@@ -1,8 +1,10 @@
 package com.github;
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SimpleTest {
@@ -22,11 +24,10 @@ public class SimpleTest {
         open("https://github.com/");//Откройте страницу
         $("[data-test-selector=nav-search-input]").setValue("Selenide").pressEnter();//Ввести Selenide
         $$("ul.repo-list li").first().$("a").click(); //кликнуть на первый элемент
-        $("h1").shouldHave(text("selenide / selenide"));//проверить текст selenide
+        $("h1").shouldHave(text("selenide / selenide"));//проверить текст selenide 16
         $("#wiki-tab").click();//Перейдите в раздел Wiki проекта
-        $("#wiki-body .markdown-body").shouldHave(text("Soft Assertions"));
-        $x("(//a[@href='/selenide/selenide/wiki/SoftAssertions'])[2]").click();//Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
-        //$$("ol[start=\"3\"]").find(visible).scrollTo().shouldHave(text("Using JUnit5 extend test class:"));//Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
+        $("#wiki-pages-filter").setValue("SoftAssertions");
+        $(By.linkText("SoftAssertions")).shouldBe(visible).click();
         $("#wiki-body").shouldHave(text("Using JUnit5 extend test class:"));
     }
     @Test
